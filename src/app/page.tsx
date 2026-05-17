@@ -3,7 +3,7 @@
 import Image from "next/image";
 import React from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { ChevronRight } from "lucide-react";
+import { ArrowUpRight, ChevronRight, Code2, Database, GraduationCap, MapPin } from "lucide-react";
 import { FaInstagram, FaThreads, FaTiktok, FaWhatsapp } from "react-icons/fa6";
 import type { ComponentType, SVGProps } from "react";
 
@@ -33,8 +33,8 @@ export default function Home(): React.ReactElement {
   const reduceMotion = useReducedMotion();
   return (
     <div className="min-h-screen bg-background selection:bg-primary/30 selection:text-primary">
-      <main className="max-w-6xl mx-auto px-6 pt-32 pb-20">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center min-h-[70vh]">
+      <main className="max-w-6xl mx-auto px-5 sm:px-6 pt-12 md:pt-16 pb-20">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-10 items-center min-h-[68vh]">
           
           {/* Left Content */}
           <motion.div 
@@ -43,14 +43,15 @@ export default function Home(): React.ReactElement {
             transition={reduceMotion ? undefined : { duration: 0.6, ease: "easeOut" }}
             className="lg:col-span-7 flex flex-col gap-8"
           >
-            <div className="space-y-4">
-              <span className="inline-block py-1 px-3 rounded-full bg-secondary text-secondary-foreground text-sm font-medium tracking-wide">
+            <div className="space-y-5">
+              <span className="inline-flex items-center gap-2 rounded-full bg-card px-4 py-2 text-sm font-semibold tracking-wide text-card-foreground shadow-sm ring-1 ring-primary/10">
+                <GraduationCap className="h-4 w-4" />
                 Computer Science Student @ UTeM
               </span>
-              <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight leading-[1.1] text-foreground">
+              <h1 className="max-w-3xl text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight leading-[1.04] text-foreground">
                 Hi, I&apos;m <span className="text-primary">Farah Azman</span>
               </h1>
-              <p className="text-xl md:text-2xl text-muted-foreground font-medium max-w-2xl leading-relaxed">
+              <p className="text-lg md:text-2xl text-muted-foreground font-medium max-w-2xl leading-relaxed">
                 I am still a student pursuing Bachelor of Computer Science majoring in Database Management with Honours.
               </p>
             </div>
@@ -71,7 +72,7 @@ export default function Home(): React.ReactElement {
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.1, y: -2 }}
                     whileTap={{ scale: 0.95 }}
-                    className="p-3 bg-secondary rounded-full text-secondary-foreground hover:bg-primary hover:text-primary-foreground transition-colors shadow-sm"
+                    className="p-3 bg-card rounded-full text-card-foreground hover:bg-primary hover:text-primary-foreground transition-colors shadow-sm ring-1 ring-primary/10"
                     aria-label={social.label}
                   >
                     <social.icon className="w-5 h-5" />
@@ -88,32 +89,62 @@ export default function Home(): React.ReactElement {
             transition={reduceMotion ? undefined : { duration: 0.7, delay: 0.2 }}
             className="lg:col-span-5 relative"
           >
-            <div className="relative w-full aspect-[4/5] rounded-[2.5rem] overflow-hidden bg-muted shadow-2xl shadow-primary/20">
-              <Image 
-                src="/profile.png" 
-                alt="Farah Azman" 
-                fill
-                priority
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover object-center"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/40 to-transparent"></div>
+            <div className="relative mx-auto w-full max-w-[28rem] rounded-[2.25rem] bg-card p-3 shadow-2xl shadow-foreground/10 ring-1 ring-primary/10 lg:mr-0">
+              <div className="relative aspect-[4/5] overflow-hidden rounded-[1.75rem] bg-muted">
+                <Image 
+                  src="/profile.png" 
+                  alt="Farah Azman" 
+                  fill
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover object-center"
+                />
+                <div className="absolute inset-x-0 bottom-0 bg-background/88 p-5 backdrop-blur-md">
+                  <div className="flex items-center gap-3">
+                    <span className="flex h-11 w-11 items-center justify-center rounded-full bg-primary text-primary-foreground">
+                      <MapPin className="h-5 w-5" />
+                    </span>
+                    <div>
+                      <p className="text-sm font-semibold text-foreground">Based in Besut, Terengganu</p>
+                      <p className="text-xs font-medium text-muted-foreground">Building thoughtful digital systems</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            {/* Decorative Element */}
-            <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-secondary rounded-full mix-blend-multiply blur-2xl opacity-70 animate-pulse"></div>
-            <div className="absolute -top-6 -right-6 w-32 h-32 bg-primary rounded-full mix-blend-multiply blur-2xl opacity-50 animate-pulse delay-700"></div>
           </motion.div>
         </div>
 
+        <div className="mt-10 grid grid-cols-1 gap-4 border-y border-primary/10 py-6 sm:grid-cols-3">
+          {[
+            { icon: GraduationCap, label: "Current Study", value: "Computer Science" },
+            { icon: Database, label: "Major", value: "Database Management" },
+            { icon: Code2, label: "Focus", value: "UI, Systems, Digitalization" },
+          ].map((item) => (
+            <div key={item.label} className="flex items-center gap-4 rounded-2xl bg-card/60 p-5 ring-1 ring-primary/10">
+              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-primary text-primary-foreground">
+                <item.icon className="h-6 w-6" />
+              </span>
+              <div>
+                <p className="text-sm font-semibold text-muted-foreground">{item.label}</p>
+                <p className="text-base font-bold text-foreground">{item.value}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
         {/* About & Skills Section */}
-        <div className="mt-32 grid grid-cols-1 md:grid-cols-2 gap-16">
+        <div className="mt-20 grid grid-cols-1 md:grid-cols-[1.05fr_0.95fr] gap-8 lg:gap-10">
           <motion.div 
             initial={reduceMotion ? undefined : { opacity: 0, y: 20 }}
             whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="space-y-6 bg-card p-10 rounded-[2.5rem] shadow-lg shadow-card/50"
+            className="space-y-6 bg-card p-8 lg:p-10 rounded-[2rem] shadow-lg shadow-foreground/5 ring-1 ring-primary/10"
           >
-            <h2 className="text-3xl font-bold text-foreground">About Me</h2>
+            <div className="flex items-center justify-between gap-4">
+              <h2 className="text-3xl font-bold text-foreground">About Me</h2>
+              <ArrowUpRight className="h-6 w-6 text-primary" />
+            </div>
             <p className="text-lg text-muted-foreground leading-relaxed">
               Hi there! I am a dedicated student with a strong passion for technology and digitalization. Having roots in Besut, Terengganu, my journey has taught me the importance of continuous learning and adaptability. 
             </p>
@@ -127,15 +158,15 @@ export default function Home(): React.ReactElement {
             whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={reduceMotion ? undefined : { delay: 0.2 }}
-            className="space-y-6"
+            className="space-y-6 rounded-[2rem] bg-card/55 p-8 shadow-sm ring-1 ring-primary/10"
           >
-            <h2 className="text-3xl font-bold text-foreground pl-2">Skills & Expertise</h2>
+            <h2 className="text-3xl font-bold text-foreground">Skills & Expertise</h2>
             <div className="flex flex-wrap gap-3">
               {skills.map((skill, idx) => (
                 <motion.div
                   key={idx}
                   whileHover={{ scale: 1.05 }}
-                  className="bg-card text-card-foreground px-5 py-3 rounded-2xl font-medium shadow-md shadow-card/50 hover:bg-primary hover:text-primary-foreground transition-colors cursor-default"
+                  className="bg-background text-foreground px-5 py-3 rounded-2xl font-semibold shadow-sm ring-1 ring-primary/10 hover:bg-primary hover:text-primary-foreground transition-colors cursor-default"
                 >
                   {skill}
                 </motion.div>
@@ -146,7 +177,7 @@ export default function Home(): React.ReactElement {
       </main>
 
       <footer className="mt-20 py-10 text-center text-muted-foreground font-medium">
-        <p>© {new Date().getFullYear()} Farah Azman. Crafted with passion.</p>
+        <p>&copy; {new Date().getFullYear()} Farah Azman. Crafted with passion.</p>
       </footer>
     </div>
   );

@@ -37,15 +37,15 @@ const achievements: Achievement[] = [
 export default function Achievements(): React.ReactElement {
   const reduceMotion = useReducedMotion();
   return (
-    <div className="min-h-screen bg-background pt-32 pb-20 selection:bg-primary/30 selection:text-primary">
-      <div className="max-w-6xl mx-auto px-6">
+    <div className="min-h-screen bg-background pt-12 md:pt-16 pb-20 selection:bg-primary/30 selection:text-primary">
+      <div className="max-w-6xl mx-auto px-5 sm:px-6">
         <motion.div
           initial={reduceMotion ? undefined : { opacity: 0, y: 20 }}
           animate={reduceMotion ? undefined : { opacity: 1, y: 0 }}
-          className="mb-16 text-center"
+          className="mb-14 rounded-[2rem] bg-card/70 p-8 text-center shadow-sm ring-1 ring-primary/10 md:p-10"
         >
-          <h1 className="text-5xl font-extrabold tracking-tight text-foreground mb-4">Achievements</h1>
-          <p className="text-xl text-muted-foreground font-medium">Milestones, awards, and recognition.</p>
+          <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-foreground mb-4">Achievements</h1>
+          <p className="text-lg md:text-xl text-muted-foreground font-medium">Milestones, awards, and recognition.</p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -55,7 +55,7 @@ export default function Achievements(): React.ReactElement {
               initial={reduceMotion ? undefined : { opacity: 0, scale: 0.95 }}
               animate={reduceMotion ? undefined : { opacity: 1, scale: 1 }}
               transition={reduceMotion ? undefined : { delay: idx * 0.1 }}
-              className="bg-card rounded-[2rem] overflow-hidden shadow-lg shadow-card/50 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 flex flex-col group"
+              className="bg-card rounded-[2rem] overflow-hidden shadow-lg shadow-foreground/5 ring-1 ring-primary/10 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 flex flex-col group"
             >
               <div className="relative h-48 w-full overflow-hidden">
                 <Image
