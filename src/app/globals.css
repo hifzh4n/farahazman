@@ -29,7 +29,7 @@
   --highlight: #fff4e1;
   --highlight-foreground: #2b231d;
   --nav-active: #4a3b32;
-  --nav-active-foreground: #fffaf2;
+  --nav-active-foreground: #ffffff;
   
   --destructive: #b35050;
   --destructive-foreground: #ffffff;
@@ -67,8 +67,8 @@
 
   --highlight: #fff4e1;
   --highlight-foreground: #2b231d;
-  --nav-active: #c8b4a6;
-  --nav-active-foreground: #2b231d;
+  --nav-active: #5e4a3e;
+  --nav-active-foreground: #ffffff;
 
   --destructive: #d47777;
   --destructive-foreground: #2b231d;
@@ -105,8 +105,8 @@
 
     --highlight: #fff4e1;
     --highlight-foreground: #2b231d;
-    --nav-active: #c8b4a6;
-    --nav-active-foreground: #2b231d;
+    --nav-active: #5e4a3e;
+    --nav-active-foreground: #ffffff;
     
     --destructive: #d47777;
     --destructive-foreground: #2b231d;
