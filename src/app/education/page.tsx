@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import { GraduationCap, Calendar, MapPin } from "lucide-react";
 
 type EducationItem = {
@@ -44,26 +44,25 @@ const education: EducationItem[] = [
 ];
 
 export default function Education(): React.ReactElement {
-  const reduceMotion = useReducedMotion();
   return (
     <div className="min-h-screen bg-background pt-12 md:pt-16 pb-20 selection:bg-primary/30 selection:text-primary">
       <div className="max-w-6xl mx-auto px-5 sm:px-6">
         <motion.div
-          initial={reduceMotion ? undefined : { opacity: 0, y: 20 }}
-          animate={reduceMotion ? undefined : { opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
           className="mb-14 rounded-[2rem] bg-card/70 p-8 shadow-sm ring-1 ring-primary/10 md:p-10"
         >
-          <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-foreground mb-4">Education</h1>
-          <p className="text-lg md:text-xl text-muted-foreground font-medium">My academic journey and qualifications.</p>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-foreground mb-4">Education</h1>
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground font-medium">My academic journey and qualifications.</p>
         </motion.div>
 
         <div className="space-y-8">
           {education.map((item, idx) => (
             <motion.div
               key={idx}
-              initial={reduceMotion ? undefined : { opacity: 0, x: -20 }}
-              animate={reduceMotion ? undefined : { opacity: 1, x: 0 }}
-              transition={reduceMotion ? undefined : { delay: idx * 0.15 }}
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: idx * 0.15 }}
               className="relative md:pl-0"
             >
               {/* Timeline dot for md+ screens */}
@@ -78,21 +77,21 @@ export default function Education(): React.ReactElement {
                   <div className="md:hidden w-12 h-12 bg-primary rounded-full flex items-center justify-center mb-6 shadow-md shadow-primary/20">
                     <GraduationCap className="w-6 h-6 text-primary-foreground" />
                   </div>
-                  <h3 className="text-xl md:text-2xl font-bold text-foreground mb-2">{item.degree}</h3>
-                  <h4 className="text-base md:text-lg font-medium text-primary mb-4">{item.school}</h4>
+                  <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-foreground mb-2">{item.degree}</h3>
+                  <h4 className="text-base sm:text-lg font-medium text-primary mb-4">{item.school}</h4>
                   
                   <div className="flex flex-wrap gap-4 mb-4">
-                    <span className="flex items-center gap-1.5 text-sm font-medium text-muted-foreground bg-secondary px-3 py-1 rounded-full">
+                    <span className="flex items-center gap-1.5 text-sm font-medium text-secondary-foreground bg-secondary px-3 py-1 rounded-full">
                       <Calendar className="w-4 h-4" />
                       {item.year}
                     </span>
-                    <span className="flex items-center gap-1.5 text-sm font-medium text-muted-foreground bg-secondary px-3 py-1 rounded-full">
+                    <span className="flex items-center gap-1.5 text-sm font-medium text-secondary-foreground bg-secondary px-3 py-1 rounded-full">
                       <MapPin className="w-4 h-4" />
                       {item.location}
                     </span>
                   </div>
                   
-                  <p className="text-muted-foreground leading-relaxed">
+                  <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
                     {item.description}
                   </p>
                 </div>

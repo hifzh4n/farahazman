@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import Image from "next/image";
 
 type Project = {
@@ -21,26 +21,25 @@ const projects: Project[] = [
 ];
 
 export default function Projects(): React.ReactElement {
-  const reduceMotion = useReducedMotion();
   return (
     <div className="min-h-screen bg-background pt-12 md:pt-16 pb-20 selection:bg-primary/30 selection:text-primary">
       <div className="max-w-6xl mx-auto px-5 sm:px-6">
         <motion.div
-          initial={reduceMotion ? undefined : { opacity: 0, y: 20 }}
-          animate={reduceMotion ? undefined : { opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
           className="mb-14 rounded-[2rem] bg-card/70 p-8 shadow-sm ring-1 ring-primary/10 md:p-10"
         >
-          <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-foreground mb-4">Projects</h1>
-          <p className="text-lg md:text-xl text-muted-foreground font-medium">Some of the selected works I&apos;ve built and designed.</p>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-foreground mb-4">Projects</h1>
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground font-medium">Some of the selected works I&apos;ve built and designed.</p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, idx) => (
             <motion.div
               key={idx}
-              initial={reduceMotion ? undefined : { opacity: 0, y: 20 }}
-              animate={reduceMotion ? undefined : { opacity: 1, y: 0 }}
-              transition={reduceMotion ? undefined : { delay: idx * 0.1 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: idx * 0.1 }}
               className="group bg-card rounded-[2rem] overflow-hidden shadow-lg shadow-foreground/5 ring-1 ring-primary/10 flex flex-col"
             >
               <div className="relative h-64 w-full overflow-hidden">
@@ -54,8 +53,8 @@ export default function Projects(): React.ReactElement {
                 />
               </div>
               <div className="p-8 flex flex-col flex-1">
-                <h3 className="text-2xl font-bold text-foreground mb-3">{project.title}</h3>
-                <p className="text-muted-foreground mb-6 flex-1">{project.description}</p>
+                <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-3">{project.title}</h3>
+                <p className="text-sm sm:text-base text-muted-foreground mb-6 flex-1">{project.description}</p>
                 
                 <div className="flex flex-wrap gap-2 mb-8">
                   {project.tags.map((tag, tagIdx) => (

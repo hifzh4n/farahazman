@@ -3,7 +3,8 @@
 @plugin "tailwindcss-animate";
 
 :root {
-  /* Pastel Brown Theme */
+  color-scheme: light;
+
   --background: #fdfbf7;
   --foreground: #4a3b32;
   
@@ -20,10 +21,15 @@
   --secondary-foreground: #4a3b32;
   
   --muted: #eaddd3;
-  --muted-foreground: #8b7355;
+  --muted-foreground: #6f5747;
   
   --accent: #c8b4a6;
-  --accent-foreground: #ffffff;
+  --accent-foreground: #2b231d;
+
+  --highlight: #fff4e1;
+  --highlight-foreground: #2b231d;
+  --nav-active: #4a3b32;
+  --nav-active-foreground: #fffaf2;
   
   --destructive: #b35050;
   --destructive-foreground: #ffffff;
@@ -35,8 +41,47 @@
   --radius: 1.5rem;
 }
 
+:root.dark {
+  color-scheme: dark;
+
+  --background: #2b231d;
+  --foreground: #f5f0e6;
+
+  --card: #3a2f27;
+  --card-foreground: #fdfbf7;
+
+  --popover: #2b231d;
+  --popover-foreground: #f5f0e6;
+
+  --primary: #c8b4a6;
+  --primary-foreground: #2b231d;
+
+  --secondary: #4a3b32;
+  --secondary-foreground: #fdfbf7;
+
+  --muted: #4a3b32;
+  --muted-foreground: #d4c4b7;
+
+  --accent: #5e4a3e;
+  --accent-foreground: #fdfbf7;
+
+  --highlight: #fff4e1;
+  --highlight-foreground: #2b231d;
+  --nav-active: #c8b4a6;
+  --nav-active-foreground: #2b231d;
+
+  --destructive: #d47777;
+  --destructive-foreground: #2b231d;
+
+  --border: transparent;
+  --input: #4a3b32;
+  --ring: #c8b4a6;
+}
+
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not(.light) {
+    color-scheme: dark;
+
     --background: #2b231d;
     --foreground: #f5f0e6;
     
@@ -57,11 +102,16 @@
     
     --accent: #5e4a3e;
     --accent-foreground: #fdfbf7;
+
+    --highlight: #fff4e1;
+    --highlight-foreground: #2b231d;
+    --nav-active: #c8b4a6;
+    --nav-active-foreground: #2b231d;
     
     --destructive: #d47777;
     --destructive-foreground: #2b231d;
     
-    --border: transparent; /* No border design */
+    --border: transparent;
     --input: #4a3b32;
     --ring: #c8b4a6;
   }
@@ -88,6 +138,11 @@
   
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
+
+  --color-highlight: var(--highlight);
+  --color-highlight-foreground: var(--highlight-foreground);
+  --color-nav-active: var(--nav-active);
+  --color-nav-active-foreground: var(--nav-active-foreground);
   
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
@@ -106,6 +161,14 @@
 @layer base {
   * {
     border-color: var(--border);
+  }
+  html {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  html::-webkit-scrollbar,
+  body::-webkit-scrollbar {
+    display: none;
   }
   body {
     background-color: var(--background);
@@ -134,6 +197,21 @@
   color: var(--primary-foreground);
   border-radius: 0.5rem;
   z-index: 1000;
+}
+
+.theme-icon-moon {
+  opacity: 0;
+  transform: rotate(90deg) scale(0);
+}
+
+:root.dark .theme-icon-sun {
+  opacity: 0;
+  transform: rotate(-90deg) scale(0);
+}
+
+:root.dark .theme-icon-moon {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
 }
 
 /* Focus visible outline for keyboard accessibility */

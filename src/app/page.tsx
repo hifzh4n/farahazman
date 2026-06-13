@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import React from "react";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import { ArrowUpRight, ChevronRight, Code2, Database, GraduationCap, MapPin } from "lucide-react";
 import { FaInstagram, FaThreads, FaTiktok, FaWhatsapp } from "react-icons/fa6";
 import type { ComponentType, SVGProps } from "react";
@@ -30,7 +30,6 @@ const socials: Social[] = [
 ];
 
 export default function Home(): React.ReactElement {
-  const reduceMotion = useReducedMotion();
   return (
     <div className="min-h-screen bg-background selection:bg-primary/30 selection:text-primary">
       <main className="max-w-6xl mx-auto px-5 sm:px-6 pt-12 md:pt-16 pb-20">
@@ -38,9 +37,9 @@ export default function Home(): React.ReactElement {
           
           {/* Left Content */}
           <motion.div 
-            initial={reduceMotion ? undefined : { opacity: 0, y: 30 }}
-            animate={reduceMotion ? undefined : { opacity: 1, y: 0 }}
-            transition={reduceMotion ? undefined : { duration: 0.6, ease: "easeOut" }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
             className="lg:col-span-7 flex flex-col gap-8"
           >
             <div className="space-y-5">
@@ -48,10 +47,13 @@ export default function Home(): React.ReactElement {
                 <GraduationCap className="h-4 w-4" />
                 Computer Science Student @ UTeM
               </span>
-              <h1 className="max-w-3xl text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight leading-[1.04] text-foreground">
-                Hi, I&apos;m <span className="text-primary">Farah Azman</span>
+              <h1 className="max-w-3xl text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-tight text-foreground">
+                Hi, I&apos;m <span>Farah Azman</span>
               </h1>
-              <p className="text-lg md:text-2xl text-muted-foreground font-medium max-w-2xl leading-relaxed">
+              <h2 className="inline-flex w-fit rounded-full bg-foreground px-4 py-2 text-xs font-bold tracking-wide text-background shadow-lg shadow-foreground/20 ring-1 ring-foreground/20 sm:text-sm md:px-6 md:py-3 md:text-base">
+                My Role is Data Analyst
+              </h2>
+              <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground font-medium max-w-2xl leading-relaxed">
                 I am still a student pursuing Bachelor of Computer Science majoring in Database Management with Honours.
               </p>
             </div>
@@ -84,15 +86,15 @@ export default function Home(): React.ReactElement {
 
           {/* Right Image */}
           <motion.div 
-            initial={reduceMotion ? undefined : { opacity: 0, scale: 0.9 }}
-            animate={reduceMotion ? undefined : { opacity: 1, scale: 1 }}
-            transition={reduceMotion ? undefined : { duration: 0.7, delay: 0.2 }}
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
             className="lg:col-span-5 relative"
           >
             <div className="relative mx-auto w-full max-w-[28rem] rounded-[2.25rem] bg-card p-3 shadow-2xl shadow-foreground/10 ring-1 ring-primary/10 lg:mr-0">
               <div className="relative aspect-[4/5] overflow-hidden rounded-[1.75rem] bg-muted">
                 <Image 
-                  src="/profile.png" 
+                  src="/profile.jpg" 
                   alt="Farah Azman" 
                   fill
                   priority
@@ -136,31 +138,31 @@ export default function Home(): React.ReactElement {
         {/* About & Skills Section */}
         <div className="mt-20 grid grid-cols-1 md:grid-cols-[1.05fr_0.95fr] gap-8 lg:gap-10">
           <motion.div 
-            initial={reduceMotion ? undefined : { opacity: 0, y: 20 }}
-            whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="space-y-6 bg-card p-8 lg:p-10 rounded-[2rem] shadow-lg shadow-foreground/5 ring-1 ring-primary/10"
           >
             <div className="flex items-center justify-between gap-4">
-              <h2 className="text-3xl font-bold text-foreground">About Me</h2>
+              <h2 className="text-2xl sm:text-3xl font-bold text-foreground">About Me</h2>
               <ArrowUpRight className="h-6 w-6 text-primary" />
             </div>
-            <p className="text-lg text-muted-foreground leading-relaxed">
+            <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
               Hi there! I am a dedicated student with a strong passion for technology and digitalization. Having roots in Besut, Terengganu, my journey has taught me the importance of continuous learning and adaptability. 
             </p>
-            <p className="text-lg text-muted-foreground leading-relaxed">
+            <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
               With a solid foundation in programming, databases, and design tools, my goal is to build impactful solutions. Whether it&apos;s crafting user interfaces or managing databases, I enjoy exploring how technology can solve real-world problems.
             </p>
           </motion.div>
 
           <motion.div 
-            initial={reduceMotion ? undefined : { opacity: 0, y: 20 }}
-            whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={reduceMotion ? undefined : { delay: 0.2 }}
+            transition={{ delay: 0.2 }}
             className="space-y-6 rounded-[2rem] bg-card/55 p-8 shadow-sm ring-1 ring-primary/10"
           >
-            <h2 className="text-3xl font-bold text-foreground">Skills & Expertise</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-foreground">Skills & Expertise</h2>
             <div className="flex flex-wrap gap-3">
               {skills.map((skill, idx) => (
                 <motion.div
@@ -175,10 +177,6 @@ export default function Home(): React.ReactElement {
           </motion.div>
         </div>
       </main>
-
-      <footer className="mt-20 py-10 text-center text-muted-foreground font-medium">
-        <p>&copy; {new Date().getFullYear()} Farah Azman. Crafted with passion.</p>
-      </footer>
     </div>
   );
 }

@@ -1,7 +1,18 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
+import { Footer } from "@/components/footer";
 import { Navbar } from "@/components/navbar";
+import { SmoothScrollProvider } from "@/components/smooth-scroll-provider";
+
+const themeInitScript = `
+  try {
+    const theme = localStorage.getItem("theme");
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    document.documentElement.classList.toggle("dark", theme === "dark" || (!theme && prefersDark));
+    document.documentElement.classList.toggle("light", theme === "light");
+  } catch {}
+`;
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -46,10 +57,14 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col font-sans bg-background text-foreground">
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+        <SmoothScrollProvider>
           <a href="#main-content" className="skip-link">Skip to content</a>
           <Navbar />
-          <div id="main-content" className="flex-1">{children}</div>
-        </body>
+          <div id="main-content" className="flex-1 pt-[76px]">{children}</div>
+          <Footer />
+        </SmoothScrollProvider>
+      </body>
     </html>
   );
 }
